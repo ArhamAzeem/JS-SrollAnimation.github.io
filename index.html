@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joker</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: fantasy;
+        }
+        .section{
+            background-color: rgb(0, 0, 0);
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #landing{
+            background-image: url(J6.jpg);
+        }
+
+        #sec1{
+            background-image: url(J3.jpg);
+        }
+        #sec2{
+            background-image: url(J1.jpg);
+        }
+        #sec3{
+            background-image: url(J4.jpg);
+        }
+        #sec4{
+            background-image: url(J7.jpg);
+        }
+
+        .box{
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            flex-direction: column;
+        }
+
+        #head{
+            margin: none;
+            border: none;
+            box-shadow: none;
+            position: fixed;
+            color: rgb(218, 0, 0);
+        }
+        h1{
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1vh 2vh black;
+            border: 2px solid white;
+            padding: 2rem;
+            box-shadow: 1vh 1vh 2vh black,-1vh -1vh 2vh black , inset 1vh 1vh 2vh black, inset -1vh -1vh 2vh black;
+        }
+
+        .content{
+            height: auto;
+            padding: 2rem;
+            box-shadow: 0 2vh 4vh black,0 -1vh 2vh black ;
+        }
+
+        p{
+            color: rgb(109, 5, 5);
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 425px) {
+                h1{
+                font-size: 2rem;
+            }
+
+            p{
+            font-size: 1rem;
+            }
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                .in-view {
+                    animation: fade 1s  0.5s both;
+                }
+
+                .not-in-view {
+                    opacity: 0;
+                }
+            }
+
+            @keyframes fade {
+            0% {
+                opacity: 0;
+                transform: translate(0, 3rem);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav"><h1 id="head">Joker</h1></div>
+        <div class="section" id="landing">
+            <div class="box">
+                <h1 class="mainh">In a world where everyone wears a mask, it's a privilege to see a soul.</h1>
+            </div>
+        </div>
+        <div class="content">
+            <p>In the twisted corridors of Gotham's underbelly, I stand as a mirror reflecting the grotesque reality of our world. Look around you, my dear audience, and witness the misery that plagues humanity. From the downtrodden souls wandering the streets to the corrupt souls who rule from their ivory towers, the world is a canvas painted with despair and decay. But fear not, for in the chaos lies opportunity, and in madness, liberation.</p>
+        </div>
+        <div class="section bg" id="sec1">
+            <div class="box">
+                <h1>I used to think that my life was a tragedy, but now I realize, it's a comedy.</h1>
+            </div>
+        </div>
+        <div class="content">
+            <p>Listen closely as I whisper the secrets of survival in this wretched world. Embrace the darkness within, for it is the only truth in a world built on lies and deceit. Shed the shackles of morality and embrace the freedom of anarchy. In a world devoid of justice, become the agent of your own destiny. Let the laughter of the Joker be your guide, leading you down the path of liberation and enlightenment.</p>
+        </div>
+        <div class="section bg" id="sec2">
+            <div class="box">
+                <h1>For my whole life, I didn't know if I even really existed. But I do, and people are starting to notice.</h1>
+            </div>
+        </div>
+        <div class="content">
+            <p>You see, my dear friends, I am not simply a villain; I am a revolutionary. A symbol of defiance against the oppressive forces that seek to control us. Through chaos, I offer you salvation. Embrace the madness, and you will find strength where others find weakness. Embrace the chaos, and you will find freedom where others find confinement. Embrace the Joker, and you will find truth where others find illusion.</p>
+        </div>
+        <div class="section bg" id="sec3">
+            <div class="box">
+                <h1>Is it just me, or is it getting crazier out there?</h1>
+            </div>
+        </div>
+        <div class="content">
+            <p>So I implore you, dear world, cast off the chains of conformity and join me in the dance of madness. Together, we shall tear down the walls of injustice and build a new world from the ashes of the old. Embrace the chaos, my friends, for in chaos, there is power. And in power, there is liberation.</p>
+        </div>
+        <div class="section bg" id="sec4">
+            <div class="box">
+                <h1>I hope my death makes more cents than my life.</h1>
+            </div>
+        </div>
+        <div class="content">
+            <p style="font-size: 1rem;">All rights reserved by Arham Azeem | Made for DSL Competition</p>
+        </div>
+    </div>
+    <script>
+        const observer = new IntersectionObserver(
+  (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view')
+                entry.target.classList.remove('not-in-view')
+            } else {
+                entry.target.classList.remove('in-view')
+                entry.target.classList.add('not-in-view')
+            }
+            })
+        },
+        {
+            rootMargin: '0px',
+            threshold: [0, 0.1, 1],
+        },
+    )
+
+    const tags = document.querySelectorAll('h1, p')
+
+        tags.forEach((tag) => {
+        observer.observe(tag)
+    })
+
+    window.addEventListener("scroll",()=>{
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop;
+        var header = document.getElementById("head");
+
+        if (distanceY >5) {
+                header.style.display = "none";
+            } else {
+                header.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
